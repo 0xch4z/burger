@@ -3,7 +3,7 @@ import { routerActions, RouterAction } from 'react-router-redux';
 
 import Button from 'material-ui/RaisedButton';
 
-import { connect } from '../../utils';
+import { connect } from 'utils';
 
 interface Props {
   readonly pushRoute: Redux.ActionCreator<RouterAction>

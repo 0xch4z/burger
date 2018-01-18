@@ -5,7 +5,7 @@
   min-height: 100vh;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
 }

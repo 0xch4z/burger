@@ -8,9 +8,9 @@ import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 import { ServerStyleSheet } from 'styled-components'
 
-import { configureStore } from '../../client/store';
-import { Html } from '../../client/containers';
-import routes from '../../client/routes';
+import { configureStore } from 'store';
+import { Html } from 'containers';
+import routes from 'routes';
 
 const manifest = require('../../../build/manifest.json');
 

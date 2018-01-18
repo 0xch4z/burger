@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 
-import { Store } from '../../models';
+import { Store } from 'models';
 
 interface HtmlProps {
   readonly manifest?: any;

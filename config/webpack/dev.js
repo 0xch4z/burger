@@ -45,6 +45,11 @@ const config = {
           'awesome-typescript-loader',
         ],
       },
+      /* for hot module reloading */
+      {
+        test: /\.jsx$/,
+        loader: 'babel-loader'
+      },
       {
         test: CSS_RE,
         include: STYLES_DIR,
@@ -78,7 +83,7 @@ const config = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        BROSER: JSON.stringify(true),
+        BROWSER: JSON.stringify(true),
         NODE_ENV: JSON.stringify('development'),
       },
     }),

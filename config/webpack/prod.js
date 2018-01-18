@@ -5,7 +5,6 @@ const manifest = require('webpack-manifest-plugin')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const extractText = require('extract-text-webpack-plugin');
 
-
 const { mkdir } = require('./utils')
 const {
   CSS_RE,
@@ -89,16 +88,28 @@ const config = {
 
     new extractText('css/[name].[hash].css'),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'js/[name].[hash].js',
+      minChunks: Infinity
+    }),
+
     new webpack.DefinePlugin({
       'process.env': {
-        BROSER: JSON.stringify(true),
-        NODE_ENV: JSON.stringify('development'),
+        BROWSER: JSON.stringify(true),
+        NODE_ENV: JSON.stringify('production'),
       },
     }),
 
     new webpack.HotModuleReplacementPlugin(),
 
     new CheckerPlugin(),
+
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+    }),
   ],
 }
 
