@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const manifest = require('webpack-manifest-plugin')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const postcssAssets = require('postcss-assets')
-const postcssNext = require('postcss-next')
+const postcssNext = require('postcss-cssnext')
 const extractText = require('extract-text-webpack-plugin');
 
 
@@ -28,7 +28,7 @@ const config = {
   entry: {
     app: './src/client/main.tsx',
     vendor: [
-      './src/vendor/main.ts',
+      './src/vendor/main.tsx',
       'react',
       'react-dom',
       'react-helmet',
@@ -58,7 +58,7 @@ const config = {
       {
         test: CSS_RE,
         include: STYLES_DIR,
-        loader: ExtractTextPlugin.extract({
+        loader: extractText.extract({
           fallback: 'style-loader',
           use: [
             'css-loader?modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]',
@@ -69,7 +69,7 @@ const config = {
       {
         test: CSS_RE,
         exclude: STYLES_DIR,
-        loader: ExtractTextPlugin.extract({
+        loader: extractText.extract({
           fallback: 'style-loader',
           use: [
             'css-loader',
@@ -80,7 +80,7 @@ const config = {
   },
 
   output: {
-    filename: 'js/[name].[chunkhash].js',
+    filename: 'js/[name].[hash].js',
     path: path.resolve('./build/public'),
     publicPath: '/public/',
   },

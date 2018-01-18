@@ -25,13 +25,14 @@ export const renderClient = (req, res) => {
   const store = configureStore(memoryHistory);
   const history = syncHistoryWithStore(memoryHistory, store);
 
+
   match({ history, routes, location }, (err, redirectLocation, renderProps) => {
     if (err) {
       res.status(500).send({ error: true, message: 'Something broke ):' })
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      const asyncRenderData = { ...renderProps, store }
+      const asyncRenderData = Object.assign({}, renderProps, { store });
 
       loadOnServer(asyncRenderData).then(() => {
         const markup = renderToString(

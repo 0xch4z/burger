@@ -7,7 +7,7 @@ const wpconfig = require('../../../config/webpack/dev')
 const compiler = $webpack(wpconfig);
 
 export const webpackDev = wpdMiddleware(compiler, {
-  publicPath: wpconfig.output,
+  publicPath: wpconfig.output.publicPath,
   stats: { colors: true },
   noInfo: true,
   hot: true,

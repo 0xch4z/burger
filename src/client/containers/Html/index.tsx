@@ -5,9 +5,9 @@ import { Helmet } from 'react-helmet';
 import { Store } from '../../models';
 
 interface HtmlProps {
-  manifest?: any;
-  markup?: string;
-  store?: Redux.Store<Store>
+  readonly manifest?: any;
+  readonly markup?: string;
+  readonly store?: Redux.Store<Store>;
 }
 
 export class Html extends React.Component<HtmlProps, {}> {
@@ -29,6 +29,9 @@ export class Html extends React.Component<HtmlProps, {}> {
     const scripts = this.resolve(['vendor.js', 'app.js']).map((src, i) => (
       <script key={i} src={src} />
     ));
+
+    console.log('pres');
+    console.log('typeof store => ', typeof store);
 
     const initialState = (
       <script

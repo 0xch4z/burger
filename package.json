@@ -8,9 +8,9 @@
     "build": "webpack --config config/webpack/index.js",
     "build:prod": "cross-env NODE_ENV=production yarn build",
     "postbuild": "webpack --config config/webpack/server.js",
-    "prestart": "yarn build",
+    "prestart": "NODE_ENV=production yarn build",
     "start": "cross-env NODE_ENV=production node build/server",
-    "dev": "node build/server",
+    "dev": "NODE_ENV=development yarn build && node build/server",
     "lint": "tslint \"src/**/**.ts*\""
   },
   "devDependencies": {

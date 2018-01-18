@@ -4,7 +4,9 @@ import { reducer as reduxAsyncReducer } from 'redux-connect';
 
 import { Store } from '../models'
 
-export default combineReducers<Store>({
+export const rootReducer: Redux.Reducer<Store> = combineReducers<Store>({
   routing: routerReducer,
   reduxAsyncConnect: reduxAsyncReducer,
 });
+
+export default rootReducer;

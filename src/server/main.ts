@@ -12,8 +12,8 @@ const DEV = process.env.NODE_ENV !== 'production';
 const app = express();
 
 if (DEV) {
-  app.use(middleware.webpackDev());
-  app.use(middleware.webpackHot());
+  app.use(middleware.webpackDev);
+  app.use(middleware.webpackHot);
 }
 
 app.use(compression());
