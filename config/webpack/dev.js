@@ -2,8 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const postcssAssets = require('postcss-assets')
-const postcssNext = require('postcss-cssnext')
 
 const { mkdir } = require('./utils')
 const {
@@ -95,11 +93,13 @@ const config = {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'js/[name].[chunkhash].js',
+      filename: 'js/[name].[hash].js',
       minChunks: Infinity
     }),
 
     new CheckerPlugin(),
+
+    new webpack.HotModuleReplacementPlugin(),
   ],
 }
 

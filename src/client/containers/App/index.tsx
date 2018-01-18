@@ -1,13 +1,15 @@
 import * as React from 'react';
 
+const style = require('./style.css');
+
 export class App extends React.Component {
 
   public render() {
     const { children } = this.props;
     return (
-      <div id="wrapper">
+      <main className={style.AppContainer}>
         {children}
-      </div>
+      </main>
     )
   }
 

@@ -1,0 +1,11 @@
+.AppContainer {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

@@ -3,8 +3,6 @@ const path = require('path')
 const webpack = require('webpack')
 const manifest = require('webpack-manifest-plugin')
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const postcssAssets = require('postcss-assets')
-const postcssNext = require('postcss-cssnext')
 const extractText = require('extract-text-webpack-plugin');
 
 
@@ -89,7 +87,7 @@ const config = {
     LOADER_OPTS_PLUGIN,
     MANIFEST_PLUGIN,
 
-    new extractText('css/[name].[hash].js'),
+    new extractText('css/[name].[hash].css'),
 
     new webpack.DefinePlugin({
       'process.env': {

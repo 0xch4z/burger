@@ -6,6 +6,8 @@ import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { syncHistoryWithStore } from 'react-router-redux';
 
+import { MuiThemeProvider } from 'material-ui/styles';
+
 import routes from './routes';
 import { configureStore } from './store'
 
@@ -17,13 +19,15 @@ const history = syncHistoryWithStore(browserHistory, store);
 const root = document.getElementById('app');
 
 ReactDOM.hydrate(
-  <Provider store={store} key="provider">
-    <Router
-      render={cmp}
-      history={history}
-    >
-      {routes}
-    </Router>
-  </Provider>,
+  <MuiThemeProvider>
+    <Provider store={store} key="provider">
+      <Router
+        render={cmp}
+        history={history}
+      >
+        {routes}
+      </Router>
+    </Provider>
+  </MuiThemeProvider>,
   root
 );

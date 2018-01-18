@@ -2,6 +2,9 @@ const { LoaderOptionsPlugin } = require('webpack')
 const manifest = require('webpack-manifest-plugin')
 const { resolve } = require('path')
 
+const postcssAssets = require('postcss-assets')
+const postcssNext = require('postcss-cssnext')
+
 module.exports = {
   /* extensions */
   EXTS: ['.ts', '.tsx', '.js'],
@@ -11,7 +14,7 @@ module.exports = {
   IMG_RE: /\.(jpe?g|png|gif)$/i,
   /* dirs */
   MODULES: ['node_modules', 'client'],
-  STYLES_DIR: resolve('./src/client/styles'),
+  STYLES_DIR: resolve('./src/client'),
   /* shared rules */
   TSLINT_RULE: {
     test: this.TS_OR_TSX_RE,

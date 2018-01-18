@@ -7,6 +7,7 @@ import { Store } from '../../models';
 interface HtmlProps {
   readonly manifest?: any;
   readonly markup?: string;
+  readonly serverStyles?: string;
   readonly store?: Redux.Store<Store>;
 }
 
@@ -20,7 +21,7 @@ export class Html extends React.Component<HtmlProps, {}> {
 
   public render() {
     const head = Helmet.rewind();
-    const { markup, store } = this.props;
+    const { markup, store, serverStyles } = this.props;
 
     let styles = this.resolve(['vendor.css', 'app.css']).map((src, i) => (
       <link key={i} rel="stylesheet" type="text/css" href={src} />
@@ -49,6 +50,7 @@ export class Html extends React.Component<HtmlProps, {}> {
           {head.link.toComponent()}
           {head.script.toComponent()}
           {styles}
+          <style id="server-styles" dangerouslySetInnerHTML={{ __html: serverStyles }} />
         </head>
         <body>
           <main id="app" dangerouslySetInnerHTML={{ __html: markup }} />
