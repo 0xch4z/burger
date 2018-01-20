@@ -5,9 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config config/webpack/index.js",
+    "build": "./node_modules/.bin/webpack --config config/webpack/index.js",
     "build:prod": "cross-env NODE_ENV=production yarn build",
-    "postbuild": "webpack --config config/webpack/server.js",
+    "postbuild": "NODE_ENV=production ./node_modules/.bin/webpack --config config/webpack/server.js",
     "prestart": "NODE_ENV=production yarn build",
     "start": "NODE_ENV=production node build/server",
     "dev": "NODE_ENV=development yarn build && NODE_ENV=development node build/server",
