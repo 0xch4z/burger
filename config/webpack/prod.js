@@ -101,8 +101,6 @@ const config = {
       },
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
-
     new CheckerPlugin(),
 
     new webpack.optimize.UglifyJsPlugin({

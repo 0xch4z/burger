@@ -32,7 +32,7 @@ const config = {
     modules: MODULES,
   },
 
-  entry: './src/server/main.ts',
+  entry: {app: ['./src/server/main.ts']},
 
   output: {
     filename: 'server.js',
@@ -45,6 +45,19 @@ const config = {
     loaders: [
       JSON_RULE,
       IMG_RULE,
+      {
+        test: TS_OR_TSX_RE,
+        loader: 'babel-loader',
+        options: {
+          presets: ['env', 'stage-0'],
+          plugins: [
+            ['transform-runtime', {
+              polyfill: false,
+              regenerator: true,
+            }],
+          ],
+        },
+      },
       {
         test: TS_OR_TSX_RE,
         loader: 'awesome-typescript-loader',
