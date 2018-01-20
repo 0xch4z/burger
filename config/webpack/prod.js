@@ -101,8 +101,6 @@ const config = {
       },
     }),
 
-    new CheckerPlugin(),
-
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false

@@ -1,39 +1,62 @@
 import * as React from 'react';
-import { routerActions, RouterAction } from 'react-router-redux';
+import axios from 'axios';
+import { List, ListItem, Avatar } from 'material-ui';
 
-import Button from 'material-ui/RaisedButton';
+import { BurgerForm } from 'components';
 
-import { connect } from 'utils';
+const style = require('./style.css');
 
-interface Props {
-  readonly pushRoute: Redux.ActionCreator<RouterAction>
+interface State {
+  items: any[];
 }
 
-@connect(
-  null,
-  dispatch => ({
-    pushRoute: r => dispatch(routerActions.push(r)),
-  })
-)
-export class Home extends React.Component<Props, any> {
+export class Home extends React.Component<any, State> {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: [],
+    };
+  }
 
   public render() {
     return (
-      <div>
-        <h1>Test</h1>
-        <Button
-          onClick={this.handleButtonClick.bind(this)}
-        >
-          foo
-        </Button>
+      <div className={style.HomeRoot}>
+        <BurgerForm newBurger={this.newBurger.bind(this)} />
+        <List style={{ width: 600 }}>
+          {this.state.items.map((item, i) => 
+          <ListItem
+            style={{ textAlign: 'right' }}
+            onClick={() => this.eatBurger(i)}
+            primaryText={item.burgerName}
+            leftIcon={<Avatar src="/public/burger.png" key={i} size={30} />} 
+          />
+        )}
+        </List>
       </div>
     )
   }
 
-  private handleButtonClick(e) {
-    e.preventDefault();
+  async componentDidMount() {
+    const { data } = await axios.get('/api/burgers');
+    this.setState({ items: data.filter(i => !i.isDevoured) });
+  }
 
-    this.props.pushRoute('/foo');
+  private async eatBurger(i) {
+    const { items } = this.state;
+    const item = items[i]
+    items.splice(i, 1);
+    this.setState({ items })
+
+    await axios.put(`/api/burgers/${item.id}`, { isDevoured: true });
+  }
+
+  public async newBurger(burgerName) {
+    const newItem: any = { burgerName }
+    this.setState({ items: [...this.state.items, newItem] })
+
+    await axios.post('/api/burgers', newItem)
   }
 
 }

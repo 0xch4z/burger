@@ -1,0 +1,20 @@
+.TextBarRoot {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+  margin-bottom: 5px;
+}
+
+.TextBarContainer {
+  margin: auto 16px;
+  width: 100%;
+}
+
+.TextBarSubmitButton {
+  margin-right: -50;
+}
+
+.TextBarTextField {
+  width: 100%;
+}

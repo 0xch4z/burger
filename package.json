@@ -68,6 +68,7 @@
     "webpack-manifest-plugin": "^1.1.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
@@ -78,6 +79,7 @@
     "history": "^4.5.1",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.20.0",
+    "material-ui-search-bar": "^0.4.1",
     "morgan": "^1.9.0",
     "mysql2": "^1.5.1",
     "react": "16.0.0",
@@ -87,6 +89,7 @@
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.7",
+    "react-stack-grid": "^0.7.1",
     "redux": "^3.6.0",
     "redux-connect": "^6.0.0",
     "redux-logger": "^3.0.6",

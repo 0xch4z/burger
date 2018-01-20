@@ -1,4 +1,4 @@
-export { App } from './App';
-export { Home } from './Home';
-export { Other } from './Other';
-export { Html } from './Html';
+export * from './App';
+export * from './Home';
+export * from './NotFound';
+export * from './Html';
